@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
+
 import { goalState } from "../recoil/atom";
 
 const PomodoroStatus = () => {

@@ -1,4 +1,5 @@
 import { selector } from "recoil";
+
 import { elapsedState } from "./atom";
 import { MAX_MINUTES, ONE_MINUTE_MS } from "../constants";
 import makeNumberToTwoString from "../utils/makeNumberToTwoString";

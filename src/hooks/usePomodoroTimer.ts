@@ -1,4 +1,6 @@
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useEffect, useRef } from "react";
+
 import {
   elapsedState,
   goalState,
@@ -6,7 +8,6 @@ import {
   startTimeState,
 } from "../recoil/atom";
 import { remainingState } from "../recoil/selector";
-import { useEffect, useRef } from "react";
 
 const usePomodoroTimer = () => {
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);

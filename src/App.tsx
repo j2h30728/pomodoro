@@ -1,15 +1,15 @@
 import PomodoroClcok from "./components/PomodoroClock";
 import PomodoroStatus from "./components/PomodoroStatus";
 import PomodoroControlButton from "./components/PomodoroControlButton";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <>
-      <h1>Pomodoro</h1>
+    <Layout>
       <PomodoroClcok />
       <PomodoroControlButton />
       <PomodoroStatus />
-    </>
+    </Layout>
   );
 }
 
