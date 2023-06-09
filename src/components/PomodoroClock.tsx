@@ -1,11 +1,9 @@
-interface PomodoroClcokProps {
-  displayMinutes: string;
-  displaySeconds: string;
-}
-const PomodoroClcok = ({
-  displayMinutes,
-  displaySeconds,
-}: PomodoroClcokProps) => {
+import { useRecoilValue } from "recoil";
+import { displayColockData } from "../recoil/selector";
+
+const PomodoroClcok = () => {
+  const [displayMinutes, displaySeconds] = useRecoilValue(displayColockData);
+
   return (
     <div>
       <span>{displayMinutes}</span>

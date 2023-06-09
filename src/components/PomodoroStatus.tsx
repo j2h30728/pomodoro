@@ -1,9 +1,21 @@
-interface PomodoroStatusProps {
-  round: number;
-  goal: number;
-}
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { goalState } from "../recoil/atom";
 
-const PomodoroStatus = ({ round, goal }: PomodoroStatusProps) => {
+const PomodoroStatus = () => {
+  const [goal, setGoal] = useRecoilState(goalState);
+  const [round, setRound] = useRecoilState(goalState);
+
+  useEffect(() => {
+    if (round === 4) {
+      setGoal(prev => prev + 1);
+      setRound(0);
+      if (goal > 12) {
+        setGoal(0);
+      }
+    }
+  }, [round, goal, setGoal, setRound]);
+
   return (
     <div>
       <div>
