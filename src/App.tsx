@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import PomodoroClcok from "./components/PomodoroClock";
 
 const ONE_MINUTE_MS = 60 * 1000 * 1;
 const MAX_MINUTES = 25;
@@ -64,29 +65,22 @@ function App() {
   const remaining = MAX_MINUTES * ONE_MINUTE_MS - elapsed;
 
   const displayMinutes = Math.floor(remaining / ONE_MINUTE_MS);
-  const displaySeconds = Math.floor((remaining / 1000) % 60);
+  const displaySeconds =
+    Math.round((remaining / 1000) % 60) === 60
+      ? 0
+      : Math.round((remaining / 1000) % 60);
 
   return (
     <>
       <h1>Pomodoro</h1>
-      <div>
-        <span>{displayMinutes.toString().padStart(2, "0")}</span>
-        <span>:</span>
-        <span>{displaySeconds.toString().padStart(2, "0")}</span>
-      </div>
+      <PomodoroClcok
+        displayMinutes={displayMinutes.toString().padStart(2, "0")}
+        displaySeconds={displaySeconds.toString().padStart(2, "0")}
+      />
       <button onClick={handleTogglePlay}>
         {isPlaying ? "일시정지" : "재생"}
       </button>
-      <div>
-        <div>
-          <div>{round}/4</div>
-          <span>ROUND</span>
-        </div>
-        <div>
-          <div>{goal}/12</div>
-          <span>GOAL</span>
-        </div>
-      </div>
+      <PomodoroStatus round={round} goal={goal} />
     </>
   );
 }
