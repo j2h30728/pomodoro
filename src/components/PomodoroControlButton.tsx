@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
 import usePomodoroTimer from "../hooks/usePomodoroTimer";
+import { motion } from "framer-motion";
 
 const PomodoroControlButton = () => {
   const { handleTogglePlay, isPlaying } = usePomodoroTimer();
   return (
-    <ControlButton onClick={handleTogglePlay}>
+    <ControlButton
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.9 }}
+      onClick={handleTogglePlay}>
       {isPlaying ? (
         <svg
           fill="currentColor"
@@ -29,7 +33,7 @@ const PomodoroControlButton = () => {
 
 export default PomodoroControlButton;
 
-const ControlButton = styled.div`
+const ControlButton = styled(motion.div)`
   width: 60px;
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
