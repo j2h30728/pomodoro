@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import usePomodoroTimer from "../hooks/usePomodoroTimer";
-import { PauseIcon, PlayIcon } from "./icons";
+import { PauseIcon, PlayIcon } from "../icons";
 
 const PomodoroControlButton = () => {
   const { handleTogglePlay, isPlaying } = usePomodoroTimer();
