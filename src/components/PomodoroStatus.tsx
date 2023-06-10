@@ -3,16 +3,17 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 
 import { goalState, roundState } from "../recoil/atom";
+import { MAX_GOAL, MAX_ROUND } from "../constants";
 
 const PomodoroStatus = () => {
   const [goal, setGoal] = useRecoilState(goalState);
   const [round, setRound] = useRecoilState(roundState);
 
   useEffect(() => {
-    if (round === 4) {
+    if (round === MAX_ROUND) {
       setGoal(prev => prev + 1);
       setRound(0);
-      if (goal > 12) {
+      if (goal > MAX_GOAL) {
         setGoal(0);
       }
     }

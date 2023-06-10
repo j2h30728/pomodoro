@@ -1,7 +1,12 @@
 import { selector } from "recoil";
 
 import { elapsedState } from "./atom";
-import { MAX_MINUTES, ONE_MINUTE_MS } from "../constants";
+import {
+  MAX_MINUTES,
+  ONE_MINUTE,
+  ONE_MINUTE_MS,
+  ONE_SECOND_MS,
+} from "../constants";
 import makeNumberToTwoString from "../utils/makeNumberToTwoString";
 
 export const remainingState = selector({
@@ -19,9 +24,9 @@ export const displayClockData = selector({
 
     const displayMinutes = Math.floor(remaining / ONE_MINUTE_MS);
     const displaySeconds =
-      Math.round((remaining / 1000) % 60) === 60
+      Math.round((remaining / ONE_SECOND_MS) % ONE_MINUTE) === ONE_MINUTE
         ? 0
-        : Math.round((remaining / 1000) % 60);
+        : Math.round((remaining / ONE_SECOND_MS) % ONE_MINUTE);
 
     return [
       makeNumberToTwoString(displayMinutes),

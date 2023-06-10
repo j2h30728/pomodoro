@@ -8,6 +8,7 @@ import {
   startTimeState,
 } from "../recoil/atom";
 import { remainingState } from "../recoil/selector";
+import { ONE_SECOND_MS } from "../constants";
 
 const usePomodoroTimer = () => {
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
@@ -34,7 +35,7 @@ const usePomodoroTimer = () => {
     if (isPlaying) {
       intervalRef.current = setInterval(() => {
         setElapsed(Date.now() - startTime);
-      }, 1000);
+      }, ONE_SECOND_MS);
     } else {
       if (intervalRef.current) clearInterval(intervalRef.current);
     }
