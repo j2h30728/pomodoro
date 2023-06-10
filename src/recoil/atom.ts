@@ -1,15 +1,5 @@
 import { atom } from "recoil";
 
-export const isPlayingState = atom({
-  key: "isPlayingState",
-  default: false,
-});
-
-export const startTimeState = atom({
-  key: "startTimeState",
-  default: Date.now(),
-});
-
 export const elapsedState = atom({
   key: "elapsedState",
   default: 0,
