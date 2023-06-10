@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 
 import { goalState } from "../recoil/atom";
+import styled from "styled-components";
 
 const PomodoroStatus = () => {
   const [goal, setGoal] = useRecoilState(goalState);
@@ -18,16 +19,34 @@ const PomodoroStatus = () => {
   }, [round, goal, setGoal, setRound]);
 
   return (
-    <div>
-      <div>
-        <div>{round}/4</div>
+    <StatusContainer>
+      <StatusWrapper>
+        <StatusValue>{round}/4</StatusValue>
         <span>ROUND</span>
-      </div>
-      <div>
-        <div>{goal}/12</div>
+      </StatusWrapper>
+      <StatusWrapper>
+        <StatusValue>{goal}/12</StatusValue>
         <span>GOAL</span>
-      </div>
-    </div>
+      </StatusWrapper>
+    </StatusContainer>
   );
 };
 export default PomodoroStatus;
+
+const StatusContainer = styled.div`
+  display: flex;
+  color: white;
+  font-size: 30px;
+`;
+
+const StatusWrapper = styled.div`
+  display: flex;
+  width: 250px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`;
+const StatusValue = styled.span`
+  color: rgba(255, 255, 255, 0.7);
+`;
