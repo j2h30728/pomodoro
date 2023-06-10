@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 import usePomodoroTimer from "../hooks/usePomodoroTimer";
-import { motion } from "framer-motion";
 
 const PomodoroControlButton = () => {
   const { handleTogglePlay, isPlaying } = usePomodoroTimer();
+
   return (
     <ControlButton
       whileHover={{ scale: 1.2 }}

@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-
-import { goalState } from "../recoil/atom";
 import styled from "styled-components";
+
+import { goalState, roundState } from "../recoil/atom";
 
 const PomodoroStatus = () => {
   const [goal, setGoal] = useRecoilState(goalState);
-  const [round, setRound] = useRecoilState(goalState);
+  const [round, setRound] = useRecoilState(roundState);
 
   useEffect(() => {
     if (round === 4) {
