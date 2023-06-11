@@ -35,23 +35,20 @@ const usePomodoroTimer = () => {
       intervalRef.current = setInterval(() => {
         setElapsed(Date.now() - startTime);
       }, ONE_SECOND_MS);
-
-      if (remaining <= 0) {
-        setIsPlaying(false);
-        setRound(prev => prev + 1);
-        setStartTime(Date.now());
-        setElapsed(0);
-      }
-    } else {
-      if (intervalRef.current) clearInterval(intervalRef.current);
     }
-
     return () => {
-      if (!isPlaying && intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
+      if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [isPlaying, startTime, remaining, setRound, setElapsed]);
+  }, [isPlaying, startTime, setElapsed]);
+
+  useEffect(() => {
+    if (remaining <= 0 && isPlaying) {
+      setIsPlaying(false);
+      clearInterval(intervalRef.current);
+      setElapsed(0);
+      setRound(prev => prev + 1);
+    }
+  }, [remaining, isPlaying, setRound, setElapsed]);
 
   return { handleTogglePlay, isPlaying };
 };

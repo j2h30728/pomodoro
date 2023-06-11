@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const PomodoroClcok = () => {
   const [displayMinutes, displaySeconds] = useRecoilValue(displayClockData);
-
+  console.log(displaySeconds);
   return (
     <ClockWrapper>
       <TimeWrapper
@@ -14,7 +14,7 @@ const PomodoroClcok = () => {
         animate="animate"
         transition={{ type: "spring" }}
         variants={pomodoroTiemrVariants}
-        key={displayMinutes}>
+        key={`minutes-${displayMinutes}`}>
         {displayMinutes}
       </TimeWrapper>
       <Colons>:</Colons>
@@ -23,7 +23,7 @@ const PomodoroClcok = () => {
         animate="animate"
         transition={{ type: "spring" }}
         variants={pomodoroTiemrVariants}
-        key={displaySeconds}>
+        key={`seconds-${displaySeconds}`}>
         {displaySeconds}
       </TimeWrapper>
     </ClockWrapper>
