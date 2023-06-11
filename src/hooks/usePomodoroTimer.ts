@@ -1,9 +1,8 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useEffect, useRef, useState } from "react";
 
-import { elapsedState } from "../recoil/atom";
-import { remainingState } from "../recoil/selector";
 import { ONE_SECOND_MS } from "../constants";
+import { elapsedState, remainingState } from "../recoil";
 
 const usePomodoroTimer = () => {
   const [elapsed, setElapsed] = useRecoilState(elapsedState);

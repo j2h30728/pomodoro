@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import usePomodoroStatusCounter from "../hooks/usePomodoroStatusCounter";
+import { usePomodoroStatusCounter } from "../hooks";
 
 const PomodoroStatus = () => {
   const { round, goal } = usePomodoroStatusCounter();

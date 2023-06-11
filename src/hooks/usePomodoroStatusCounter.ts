@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { goalState, roundState } from "../recoil/atom";
-import { remainingState } from "../recoil/selector";
+
 import { MAX_GOAL, MAX_ROUND } from "../constants";
+import { goalState, remainingState, roundState } from "../recoil";
 
 const usePomodoroStatusCounter = () => {
   const [goal, setGoal] = useRecoilState(goalState);
