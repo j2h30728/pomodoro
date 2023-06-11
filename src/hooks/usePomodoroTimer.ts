@@ -10,10 +10,10 @@ const usePomodoroTimer = () => {
   const [goal, setGoal] = useRecoilState(goalState);
   const setRound = useSetRecoilState(roundState);
 
+  const remaining = useRecoilValue(remainingState);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [startTime, setStartTime] = useState(0);
-
-  const remaining = useRecoilValue(remainingState);
 
   const intervalRef = useRef<number>(0);
 
@@ -35,6 +35,13 @@ const usePomodoroTimer = () => {
       intervalRef.current = setInterval(() => {
         setElapsed(Date.now() - startTime);
       }, ONE_SECOND_MS);
+
+      if (remaining <= 0) {
+        setIsPlaying(false);
+        setRound(prev => prev + 1);
+        setStartTime(Date.now());
+        setElapsed(0);
+      }
     } else {
       if (intervalRef.current) clearInterval(intervalRef.current);
     }
@@ -44,17 +51,7 @@ const usePomodoroTimer = () => {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isPlaying, startTime, setElapsed]);
-
-  useEffect(() => {
-    if (remaining <= 0 && isPlaying) {
-      setIsPlaying(false);
-      if (intervalRef.current) clearInterval(intervalRef.current);
-      setRound(prev => prev + 1);
-      setStartTime(Date.now());
-      setElapsed(0);
-    }
-  }, [isPlaying, remaining, setElapsed, setIsPlaying, setRound, setStartTime]);
+  }, [isPlaying, startTime, remaining, setRound, setElapsed]);
 
   return { handleTogglePlay, isPlaying };
 };
