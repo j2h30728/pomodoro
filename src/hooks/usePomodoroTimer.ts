@@ -1,15 +1,12 @@
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useEffect, useRef, useState } from "react";
 
-import { elapsedState, goalState, roundState } from "../recoil/atom";
+import { elapsedState } from "../recoil/atom";
 import { remainingState } from "../recoil/selector";
-import { MAX_GOAL, ONE_SECOND_MS } from "../constants";
+import { ONE_SECOND_MS } from "../constants";
 
 const usePomodoroTimer = () => {
   const [elapsed, setElapsed] = useRecoilState(elapsedState);
-  const [goal, setGoal] = useRecoilState(goalState);
-  const setRound = useSetRecoilState(roundState);
-
   const remaining = useRecoilValue(remainingState);
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -18,8 +15,6 @@ const usePomodoroTimer = () => {
   const intervalRef = useRef<number>(0);
 
   const handleTogglePlay = () => {
-    if (goal === MAX_GOAL) setGoal(0);
-
     if (!isPlaying) {
       setIsPlaying(true);
       setStartTime(Date.now() - elapsed);
@@ -42,13 +37,12 @@ const usePomodoroTimer = () => {
   }, [isPlaying, startTime, setElapsed]);
 
   useEffect(() => {
-    if (remaining <= 0 && isPlaying) {
+    if (remaining < 0 && isPlaying) {
       setIsPlaying(false);
       clearInterval(intervalRef.current);
       setElapsed(0);
-      setRound(prev => prev + 1);
     }
-  }, [remaining, isPlaying, setRound, setElapsed]);
+  }, [remaining, isPlaying, setElapsed]);
 
   return { handleTogglePlay, isPlaying };
 };

@@ -17,7 +17,7 @@ export const remainingState = selector({
   },
 });
 
-export const displayClockData = selector({
+export const displayClockDataState = selector({
   key: "displayClockDataState",
   get: ({ get }) => {
     const remaining = get(remainingState);

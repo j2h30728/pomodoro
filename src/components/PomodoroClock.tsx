@@ -1,12 +1,14 @@
 import { useRecoilValue } from "recoil";
 
-import { displayClockData } from "../recoil/selector";
+import { displayClockDataState } from "../recoil/selector";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const PomodoroClcok = () => {
-  const [displayMinutes, displaySeconds] = useRecoilValue(displayClockData);
-  console.log(displaySeconds);
+  const [displayMinutes, displaySeconds] = useRecoilValue(
+    displayClockDataState
+  );
+
   return (
     <ClockWrapper>
       <TimeWrapper

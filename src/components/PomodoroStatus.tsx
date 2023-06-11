@@ -1,21 +1,9 @@
-import { useEffect } from "react";
-import { useRecoilState } from "recoil";
 import styled from "styled-components";
 
-import { goalState, roundState } from "../recoil/atom";
-import { MAX_ROUND } from "../constants";
+import usePomodoroStatusCounter from "../hooks/usePomodoroStatusCounter";
 
 const PomodoroStatus = () => {
-  const [goal, setGoal] = useRecoilState(goalState);
-  const [round, setRound] = useRecoilState(roundState);
-
-  useEffect(() => {
-    if (round === MAX_ROUND) {
-      setGoal(prev => prev + 1);
-      setRound(0);
-    }
-  }, [round, goal, setGoal, setRound]);
-
+  const { round, goal } = usePomodoroStatusCounter();
   return (
     <StatusContainer>
       <StatusWrapper>
