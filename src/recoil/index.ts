@@ -1,2 +1,2 @@
-export { elapsedState, goalState, roundState } from "./atom";
+export { elapsedState } from "./atom";
 export { displayClockDataState, remainingState } from "./selector";
