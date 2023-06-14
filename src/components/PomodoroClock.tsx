@@ -1,10 +1,10 @@
 import { useRecoilValue } from "recoil";
-
-import { displayClockDataState } from "../recoil/selector";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 
-const PomodoroClcok = () => {
+import { displayClockDataState } from "../recoil";
+
+const PomodoroClock = () => {
   const [displayMinutes, displaySeconds] = useRecoilValue(
     displayClockDataState
   );
@@ -12,19 +12,19 @@ const PomodoroClcok = () => {
   return (
     <ClockWrapper>
       <TimeWrapper
-        initial="initail"
+        initial="initial"
         animate="animate"
         transition={{ type: "spring" }}
-        variants={pomodoroTiemrVariants}
+        variants={pomodoroTimerVariants}
         key={`minutes-${displayMinutes}`}>
         {displayMinutes}
       </TimeWrapper>
       <Colons>:</Colons>
       <TimeWrapper
-        initial="initail"
+        initial="initial"
         animate="animate"
         transition={{ type: "spring" }}
-        variants={pomodoroTiemrVariants}
+        variants={pomodoroTimerVariants}
         key={`seconds-${displaySeconds}`}>
         {displaySeconds}
       </TimeWrapper>
@@ -32,10 +32,10 @@ const PomodoroClcok = () => {
   );
 };
 
-export default PomodoroClcok;
+export default PomodoroClock;
 
-const pomodoroTiemrVariants = {
-  initail: { scale: 0.8, opacity: 0.3 },
+const pomodoroTimerVariants: Variants = {
+  initial: { scale: 0.8, opacity: 0.3 },
   animate: { scale: 1.0, opacity: 1 },
 };
 

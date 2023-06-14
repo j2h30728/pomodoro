@@ -11,7 +11,7 @@ const usePomodoroTimer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [startTime, setStartTime] = useState(0);
 
-  const intervalRef = useRef<number>(0);
+  const intervalRef = useRef<number>();
 
   const handleTogglePlay = () => {
     if (!isPlaying) {
