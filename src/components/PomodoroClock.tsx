@@ -1,8 +1,8 @@
 import { useRecoilValue } from "recoil";
-
-import { displayClockDataState } from "../recoil/selector";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { Variants, motion } from "framer-motion";
+
+import { displayClockDataState } from "../recoil";
 
 const PomodoroClock = () => {
   const [displayMinutes, displaySeconds] = useRecoilValue(
@@ -34,7 +34,7 @@ const PomodoroClock = () => {
 
 export default PomodoroClock;
 
-const pomodoroTimerVariants = {
+const pomodoroTimerVariants: Variants = {
   initial: { scale: 0.8, opacity: 0.3 },
   animate: { scale: 1.0, opacity: 1 },
 };
