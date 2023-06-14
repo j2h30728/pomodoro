@@ -26,7 +26,7 @@
 
 ## 👀 홈페이지 프리뷰
 
-<img width="500px" src="https://im.ezgif.com/tmp/ezgif-1-47829e8f4a.gif" alt="메인화면" >
+<img width="500px" src="./images/preview.gif" alt="메인화면" >
 
 ## 📌 프로젝트 실행 방법
 
