@@ -1,6 +1,6 @@
 import {
   Layout,
-  PomodoroClcok,
+  PomodoroClock,
   PomodoroControlButton,
   PomodoroStatus,
 } from "./components";
@@ -8,7 +8,7 @@ import {
 function App() {
   return (
     <Layout>
-      <PomodoroClcok />
+      <PomodoroClock />
       <PomodoroControlButton />
       <PomodoroStatus />
     </Layout>

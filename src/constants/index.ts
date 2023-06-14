@@ -1,6 +1,6 @@
 export const ONE_MINUTE_MS = 60 * 1000;
 
-export const MAX_MINUTES = 0;
+export const MAX_MINUTES = 25;
 
 export const ONE_MINUTE = 60;
 

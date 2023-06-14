@@ -1,17 +1,22 @@
 import styled from "styled-components";
 
 import { usePomodoroStatusCounter } from "../hooks";
+import { MAX_GOAL, MAX_ROUND } from "../constants";
 
 const PomodoroStatus = () => {
   const { round, goal } = usePomodoroStatusCounter();
   return (
     <StatusContainer>
       <StatusWrapper>
-        <StatusValue>{round}/4</StatusValue>
+        <StatusValue>
+          {round}/{MAX_ROUND}
+        </StatusValue>
         <span>ROUND</span>
       </StatusWrapper>
       <StatusWrapper>
-        <StatusValue>{goal}/12</StatusValue>
+        <StatusValue>
+          {goal}/{MAX_GOAL}
+        </StatusValue>
         <span>GOAL</span>
       </StatusWrapper>
     </StatusContainer>
